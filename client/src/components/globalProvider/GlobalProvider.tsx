@@ -13,12 +13,10 @@ const GlobalContextProvider = (props: any) => {
 
 
   const contextValues: iGlobalContext = useMemo(
-    () => {
-      return {
-        id,
-        setId,
-      }
-    }, [
+    () => ({
+      id,
+      setId,
+    }), [
       id,
       setId,
   ]);

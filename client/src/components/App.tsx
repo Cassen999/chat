@@ -3,7 +3,7 @@ import '../styles/index.scss';
 import { Login } from './Login';
 import useLocalStorage from './hooks/useLocalStorage';
 
-export const App = () => {
+const App = () => {
   const [value, setValue] = useLocalStorage('id');
 
   useEffect(() => {
@@ -16,4 +16,6 @@ export const App = () => {
       <Login setValue={setValue} />
     </>
   )
-}
+};
+
+export default App;

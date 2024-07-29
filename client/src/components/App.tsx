@@ -1,17 +1,19 @@
-import { useContext } from 'react'
+import React, { useContext, useEffect } from 'react';
 import '../styles/index.scss';
-import Login from './Login';
-import { GlobalContext, iGlobalContext } from './globalProvider/GlobalProvider';
+import { Login } from './Login';
+import useLocalStorage from './hooks/useLocalStorage';
 
-function App() {
-  const { id } = useContext(GlobalContext) as iGlobalContext;
+export const App = () => {
+  const [value, setValue] = useLocalStorage('id');
+
+  useEffect(() => {
+    console.log(value);
+  }, [value])
 
   return (
     <>
-      {id}
-      <Login />
+      {value}
+      <Login setValue={setValue} />
     </>
   )
 }
-
-export default App

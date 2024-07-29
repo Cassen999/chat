@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
 export interface iGlobalContext {
   id: string | undefined;
@@ -10,7 +10,6 @@ export const GlobalContext = createContext<iGlobalContext | null>(null);
 const GlobalContextProvider = (props: any) => {
   const { children } = props;
   const [id, setId] = useState<string>('');
-
 
   const contextValues: iGlobalContext = useMemo(
     () => ({

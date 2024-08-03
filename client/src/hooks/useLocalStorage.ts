@@ -4,7 +4,7 @@ const PREFIX = 'chat-';
 
 export default function useLocalStorage(key: any, initialValue?: any) {
   const prefixedKey = PREFIX + key;
-  const [value, setValue] = useState(() => {
+  const [id, setid] = useState(() => {
     const jsonValue = localStorage.getItem(prefixedKey);
     if (!!jsonValue) return JSON.parse(jsonValue);
     if (typeof initialValue === 'function') {
@@ -15,8 +15,8 @@ export default function useLocalStorage(key: any, initialValue?: any) {
   });
 
   useEffect(() => {
-    localStorage.setItem(prefixedKey, JSON.stringify(value).trim());
-  }, [prefixedKey, value]);
+    localStorage.setItem(prefixedKey, JSON.stringify(id)?.trim());
+  }, [prefixedKey, id]);
 
-  return [value, setValue];
+  return [id, setid];
 }

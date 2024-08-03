@@ -1,21 +1,25 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../styles/index.scss';
 import { Login } from './Login';
-import useLocalStorage from './hooks/useLocalStorage';
+import useLocalStorage from '../hooks/useLocalStorage';
+import Dashboard from './Dashboard';
+import { ContactsProvider } from '../contexts/ContactsProvider';
+import { ConversationsProvider } from '../contexts/ConversationsProvider';
 
 const App = () => {
-  const [value, setValue] = useLocalStorage('id');
+  const [id, setid] = useLocalStorage('id');
 
-  useEffect(() => {
-    console.log(value);
-  }, [value])
+  const dashboard: JSX.Element = (
+    <ContactsProvider>
+      <ConversationsProvider>
+        <Dashboard id={id} />
+      </ConversationsProvider>
+    </ContactsProvider>
+  )
 
   return (
-    <>
-      {value}
-      <Login setValue={setValue} />
-    </>
-  )
+    id ? dashboard : <Login setid={setid} />
+  );
 };
 
 export default App;

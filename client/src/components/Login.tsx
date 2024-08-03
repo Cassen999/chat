@@ -2,7 +2,7 @@ import React, { FormEvent, useRef, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 
-export const Login = ({ setValue }: any) => {
+export const Login = ({ setid }: any) => {
   const [inputValue, setInputValue] = useState<string>('');
   const idRef = useRef<any>();
 
@@ -10,11 +10,11 @@ export const Login = ({ setValue }: any) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setValue(inputValue)
+    setid(inputValue)
   };
 
   const createNewId = () => {
-    setValue(uuidv4())
+    setid(uuidv4())
   }
 
   return (
